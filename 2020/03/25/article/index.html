@@ -179,13 +179,13 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h1><h3 id="1、Node-与-Cluste"><a href="#1、Node-与-Cluste" class="headerlink" title="1、Node 与 Cluste"></a>1、Node 与 Cluste</h3><p>Elastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。</p>
+            <h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h1><h2 id="1、Node-与-Cluste"><a href="#1、Node-与-Cluste" class="headerlink" title="1、Node 与 Cluste"></a>1、Node 与 Cluste</h2><p>Elastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。</p>
 <p>单个 Elastic 实例称为一个节点（node）。一组节点构成一个集群（cluster）。</p>
-<h3 id="2、-Index"><a href="#2、-Index" class="headerlink" title="2、 Index"></a>2、 Index</h3><p>Elastic 会索引所有字段，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。</p>
+<h2 id="2、Index"><a href="#2、Index" class="headerlink" title="2、Index"></a>2、Index</h2><p>Elastic 会索引所有字段，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。</p>
 <p>所以，Elastic 数据管理的顶层单位就叫做 Index（索引）。它是单个数据库的同义词。每个 Index （即数据库）的名字必须是小写。</p>
 <p>下面的命令可以查看当前节点的所有 Index。</p>
 <pre><code class="bash">$ curl -X GET &#39;http://localhost:9200/_cat/indices?v&#39;</code></pre>
-<h3 id="3、Document"><a href="#3、Document" class="headerlink" title="3、Document"></a>3、Document</h3><p>Index 里面单条的记录称为 Document（文档）。许多条 Document 构成了一个 Index。</p>
+<h2 id="3、Document"><a href="#3、Document" class="headerlink" title="3、Document"></a>3、Document</h2><p>Index 里面单条的记录称为 Document（文档）。许多条 Document 构成了一个 Index。</p>
 <p>Document 使用 JSON 格式表示，下面是一个例子。</p>
 <pre><code class="json">{
   &quot;user&quot;: &quot;张三&quot;,
@@ -193,7 +193,7 @@
   &quot;desc&quot;: &quot;数据库管理&quot;
 }</code></pre>
 <p>同一个 Index 里面的 Document，不要求有相同的结构（scheme），但是最好保持相同，这样有利于提高搜索效率。</p>
-<h3 id="4、-Type"><a href="#4、-Type" class="headerlink" title="4、 Type"></a>4、 Type</h3><p>Document 可以分组，比如<code>weather</code>这个 Index 里面，可以按城市分组（北京和上海），也可以按气候分组（晴天和雨天）。这种分组就叫做 Type，它是虚拟的逻辑分组，用来过滤 Document。</p>
+<h2 id="4、-Type"><a href="#4、-Type" class="headerlink" title="4、 Type"></a>4、 Type</h2><p>Document 可以分组，比如<code>weather</code>这个 Index 里面，可以按城市分组（北京和上海），也可以按气候分组（晴天和雨天）。这种分组就叫做 Type，它是虚拟的逻辑分组，用来过滤 Document。</p>
 <p>不同的 Type 应该有相似的结构（schema），举例来说，<code>id</code>字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的<a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/mapping.html" target="_blank" rel="noopener">一个区别</a>。性质完全不同的数据（比如<code>products</code>和<code>logs</code>）应该存成两个 Index，而不是一个 Index 里面的两个 Type（虽然可以做到）。</p>
 <p>下面的命令可以列出每个 Index 所包含的 Type。</p>
 <pre><code class="bash">$ curl &#39;localhost:9200/_mapping?pretty=true&#39;</code></pre>
@@ -207,7 +207,7 @@
 }</code></pre>
 <p>然后，我们发出 DELETE 请求，删除这个 Index。</p>
 <pre><code class="bash">$ curl -X DELETE &#39;localhost:9200/weather&#39;</code></pre>
-<h2 id="四、中文分词设置"><a href="#四、中文分词设置" class="headerlink" title="四、中文分词设置"></a>四、中文分词设置</h2><p>首先，安装中文分词插件。这里使用的是 <a href="https://github.com/medcl/elasticsearch-analysis-ik/" target="_blank" rel="noopener">ik</a>，也可以考虑其他插件（比如 <a href="https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-smartcn.html" target="_blank" rel="noopener">smartcn</a>）。</p>
+<h2 id="6、中文分词设置"><a href="#6、中文分词设置" class="headerlink" title="6、中文分词设置"></a>6、中文分词设置</h2><p>首先，安装中文分词插件。这里使用的是 <a href="https://github.com/medcl/elasticsearch-analysis-ik/" target="_blank" rel="noopener">ik</a>，也可以考虑其他插件（比如 <a href="https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-smartcn.html" target="_blank" rel="noopener">smartcn</a>）。</p>
 <blockquote>
 <pre><code class="javascript">$ ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v5.5.1/elasticsearch-analysis-ik-5.5.1.zip</code></pre>
 </blockquote>
