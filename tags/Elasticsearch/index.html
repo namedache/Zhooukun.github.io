@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Zhouk">
   <meta name="keywords" content="">
-  <title>小小的阿哲</title>
+  <title>标签 - Elasticsearch ~ 小小的阿哲</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css"  >
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -128,10 +128,6 @@
           </div>
 
           
-            <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
-            </div>
-          
         </div>
       </div>
     </div>
@@ -147,93 +143,20 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-
-  <div class="row mx-auto index-card">
+<div class="list-group">
+<!--  <p class="h4">共计 1 篇文章</p>-->
+  <hr>
+  
     
+      
+      <p class="h5">2020</p>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/25/article/">
-        <p class="h4 index-header">Elasticsearch(一)</p>
-      </a>
-
-      <a href="/2020/03/25/article/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Elasticsearch1、Node 与 ClusteElastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。
-单个 Elastic 实例称为一个节点（node）。一组节点构成一个集群（cluster）。
-2、 IndexElastic 会索引所有字段，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。
-所以，Elastic 数据管理的顶层单位就叫做 Index（索引）。它是单个数据库的同义词。每个 Index （即数据库）的名字必须是小写。
-下面的命令可以查看当前节点的所有 Index。
-$ </div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-25&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Elasticsearch/">Elasticsearch</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/06/java/">
-        <p class="h4 index-header">java 设计模式(一)</p>
-      </a>
-
-      <a href="/2020/03/06/java/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">单例模式介绍 每个类只能创建一个实例对象。Java Singleton模式主要作用是保证在Java应用程序中，一个类Class只有一个实例存在。 使用Singleton的好处还在于可以节省内存，因为它限制了实例的个数，有利于Java垃圾回收（garbage collection）。
-优点
-1 控制资源的使用，通过线程同步来控制资源的并发访问；
-2 控制实例产生的数量，达到节约资源的目的。
-3 作为通信媒介使用，也就是数据共享，它可以在不建立直接关联的条件下，让多个不相关的两个线程或者进程之间实现通信。
-
-种类饿汉-单例式 懒汉-单例式 静态内部类
-1.饿汉-单例式效率高，线程安全，但浪费内存；</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-06&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/java/">java</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/java/">java</a>&nbsp;
-          
-            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-
+    <a href="/2020/03/25/article/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Elasticsearch(一)</span>
+      <span style="float: right;">03-25</span>
+    </a>
+  
+</div>
 
 
 
@@ -389,7 +312,7 @@ $ </div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Yes Sir&nbsp;",
+        "标签 - Elasticsearch&nbsp;",
       ],
       cursorChar: "*",
       typeSpeed: 50,
